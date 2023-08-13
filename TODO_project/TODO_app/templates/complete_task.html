@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="col-6 m-auto">
+    <h1 class="text-center bg-success rounded-pill ">Complete_Task</h1>
+
+    <table class="table text-center table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in data %}
+            <tr>
+                {% if d.is_completed %}
+                <th scope="row">{{d.taskTitle}}</th>
+                <th scope="row">{{d.taskDescription}}</th>
+                <th scope="row">complete</th>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

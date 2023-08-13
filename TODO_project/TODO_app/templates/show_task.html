@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<div class="col-6 m-auto">
+  <h1 class="text-center bg-success rounded-pill ">Show_Task</h1>
+
+  <table class="table text-center table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for d in data %}
+      <tr>
+        {% if d.is_completed == False %}
+        <th scope="row">{{d.taskTitle}}</th>
+        <th scope="row">{{d.taskDescription}}</th>
+        <th scope="row">incomplete</th>
+        <th scope="row">
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <a href="{% url 'delete' d.id %}" type="button" class="btn btn-outline-primary">Delete</a>
+            <a href="{% url 'edit' d.id %}" type="button" class="btn btn-outline-primary">Edit</a>
+            <a href="{% url 'complete' d.id %}" type="button" class="btn btn-outline-primary">Complete</a>
+          </div>
+        </th>
+
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
